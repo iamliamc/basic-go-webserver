@@ -3,6 +3,24 @@ package main
 import "fmt"
 
 func main() {
+	// pointer operator
+	var firstName *string = new(string)
+
+	// dereference pointer operator
+	*firstName = "Arthur"
+
+	fmt.Println(*firstName)
+
+	lastName := "Considine"
+	ptr := &lastName
+	fmt.Println(ptr, *ptr)
+
+	// pointer is the same value is different
+	lastName = "Hazle"
+	fmt.Println(ptr, *ptr)
+}
+
+func exploreValueTypes() {
 	fmt.Println("Hello from a module, Gophers!")
 	var i int
 	i = 42
