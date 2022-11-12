@@ -25,9 +25,57 @@ const (
 )
 
 func main() {
-	exploreConstantValues()
-	explorePointerValues()
-	exploreValueTypes()
+	exploreMaps()
+	// exploreArrays()
+	// exploreSlices()
+	// exploreConstantValues()
+	// explorePointerValues()
+	// exploreValueTypes()
+}
+
+func exploreMaps() {
+	m := map[string]int{"foo": 42}
+	fmt.Println(m)
+	fmt.Println(m["foo"])
+
+	m["foo"] = 27
+	fmt.Println(m)
+
+	delete(m, "foo")
+	fmt.Println(m)
+}
+
+func exploreSlices() {
+	arr := [3]int{1, 2, 3}
+
+	// Create a slice of the array from the beginning of that collection to the end
+	slice := arr[:]
+
+	arr[1] = 42
+	slice[2] = 27
+
+	// Shows that the slice has a pointer to the array
+	fmt.Println(arr, slice)
+
+	slice2 := []int{1, 2, 3}
+	slice2 = append(slice2, 4, 42, 27)
+	fmt.Println(slice2)
+
+	s3 := slice2[1:]
+	s4 := slice2[:2]
+	s5 := slice[1:2]
+	fmt.Println(s3, s4, s5)
+}
+
+func exploreArrays() {
+	var arr [3]int
+	arr[0] = 1
+	arr[1] = 2
+	arr[2] = 3
+	fmt.Println(arr)
+
+	arr2 := [3]int{1, 2, 3}
+	fmt.Println(arr2)
 }
 
 func exploreConstantValues() {
