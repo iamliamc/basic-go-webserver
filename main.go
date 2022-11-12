@@ -25,12 +25,30 @@ const (
 )
 
 func main() {
-	exploreMaps()
+	exploreStructs()
+	// exploreMaps()
 	// exploreArrays()
 	// exploreSlices()
 	// exploreConstantValues()
 	// explorePointerValues()
 	// exploreValueTypes()
+}
+
+func exploreStructs() {
+	type user struct {
+		ID        int
+		FirstName string
+		LastName  string
+	}
+
+	var u user
+	u.ID = 1
+	u.FirstName = "Liam"
+	u.LastName = "Considine"
+	fmt.Println(u.FirstName)
+
+	u2 := user{ID: 2, FirstName: "Ciaran", LastName: "Considine"}
+	fmt.Println(u2)
 }
 
 func exploreMaps() {
