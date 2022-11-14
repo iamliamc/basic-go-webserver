@@ -1,5 +1,7 @@
 package basicExamples
 
+import "net/http"
+
 func BasicFlowExamples(showOutput bool) {
 	if showOutput {
 		basicLoopWithBreak()
@@ -64,6 +66,24 @@ func basicLoopOverCollections() {
 	for k, v := range wellKnownPorts {
 		println(k, v)
 	}
+}
+
+func basicSwitchStatement() {
+	r := http.Request{Method: "GET"}
+
+	switch r.Method {
+	case "GET":
+		println("Get request")
+	case "POST":
+		println("Post request")
+	case "PUT":
+		println("Post request")
+	case "DELETE":
+		println("Delete request")
+	default:
+		println("Unhandled method")
+	}
+
 }
 
 // func panicConcept() {
