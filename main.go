@@ -28,7 +28,7 @@ func main() {
 
 		fmt.Println(u)
 	}
-	if false {
+	if true {
 		port := 3003
 		_, err := startWebServer(port, 2)
 		fmt.Println(err)
