@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net/http"
 
 	basicexamples "github.com/pluralsight/webservice/basicExamples"
 	"github.com/pluralsight/webservice/controllers"
@@ -14,24 +15,29 @@ func main() {
 	// This external visibility is controlled by capitalizing the first letter of the item declared.
 	/// All declarations, such as Types, Variables, Constants, Functions, etc.,
 	/// that start with a capital letter are visible outside the current package.
-
+	showExamples := false
 	basicexamples.Examples(false)
-	u := models.User{
-		ID:        2,
-		FirstName: "Liam",
-		LastName:  "Considine",
-	}
 
-	fmt.Println(u)
-	port := 1000
+	if showExamples {
+		u := models.User{
+			ID:        2,
+			FirstName: "Liam",
+			LastName:  "Considine",
+		}
+
+		fmt.Println(u)
+	}
+	port := 3003
 	_, err := startWebServer(port, 2)
 	fmt.Println(err)
 }
 
 func startWebServer(port int, numberOfRetries int) (int, error) {
-	fmt.Println("Starting server...")
 	controllers.RegisterControllers()
+	fmt.Println("Starting server...")
 	fmt.Println("Server started on port", port)
+
+	http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
 	fmt.Println("Number of retries", numberOfRetries)
-	return port, errors.New("Something went wrong")
+	return port, errors.New("something went wrong")
 }
