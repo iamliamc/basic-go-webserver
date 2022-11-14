@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	basicexamples "github.com/pluralsight/webservice/basicExamples"
+	"github.com/pluralsight/webservice/basicExamples"
 	"github.com/pluralsight/webservice/controllers"
 	"github.com/pluralsight/webservice/models"
 )
@@ -16,7 +16,8 @@ func main() {
 	/// All declarations, such as Types, Variables, Constants, Functions, etc.,
 	/// that start with a capital letter are visible outside the current package.
 	showExamples := false
-	basicexamples.Examples(false)
+	basicExamples.BasicTypeExamples(showExamples)
+	basicExamples.BasicFlowExamples(true)
 
 	if showExamples {
 		u := models.User{
@@ -27,9 +28,11 @@ func main() {
 
 		fmt.Println(u)
 	}
-	port := 3003
-	_, err := startWebServer(port, 2)
-	fmt.Println(err)
+	if false {
+		port := 3003
+		_, err := startWebServer(port, 2)
+		fmt.Println(err)
+	}
 }
 
 func startWebServer(port int, numberOfRetries int) (int, error) {

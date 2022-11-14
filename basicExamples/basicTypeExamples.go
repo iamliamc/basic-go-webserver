@@ -1,4 +1,4 @@
-package basicexamples
+package basicExamples
 
 import "fmt"
 
@@ -24,7 +24,7 @@ const (
 	repeatLastConstantExpression
 )
 
-func Examples(showOutput bool) {
+func BasicTypeExamples(showOutput bool) {
 	if showOutput {
 		exploreStructs()
 		exploreMaps()
