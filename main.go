@@ -15,9 +15,10 @@ func main() {
 	// This external visibility is controlled by capitalizing the first letter of the item declared.
 	/// All declarations, such as Types, Variables, Constants, Functions, etc.,
 	/// that start with a capital letter are visible outside the current package.
-	showExamples := false
+	showExamples := true
 	basicExamples.BasicTypeExamples(showExamples)
-	basicExamples.BasicFlowExamples(true)
+	basicExamples.BasicFlowExamples(showExamples)
+	basicExamples.BasicObjectExamples(showExamples)
 
 	if showExamples {
 		u := models.User{
@@ -28,10 +29,12 @@ func main() {
 
 		fmt.Println(u)
 	}
-	if true {
+	if !showExamples {
 		port := 3003
 		_, err := startWebServer(port, 2)
 		fmt.Println(err)
+	} else {
+		fmt.Println("Change showExamples bool to start the server")
 	}
 }
 

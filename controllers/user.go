@@ -13,13 +13,20 @@ type userController struct {
 	userIDPattern *regexp.Regexp
 }
 
+// The & Operator
+// & goes in front of a variable when you want to get that variable's memory address.
+// The * Operator
+// * goes in front of a variable that holds a memory address and resolves it (it is therefore the counterpart to the & operator).
+// It goes and gets the thing that the pointer was pointing at, e.g. *myString.
+
 func newUserController() *userController {
 	return &userController{
 		userIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
 	}
 }
 
-// implements the Handler interface https://pkg.go.dev/net/http#Handler
+// uc implements the Handler interface https://pkg.go.dev/net/http#Handler
+// which means we can call 	http.Handle("/users", uc) in RegisterControllers
 func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/users" {
 		switch r.Method {
