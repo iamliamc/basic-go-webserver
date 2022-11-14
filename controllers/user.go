@@ -13,8 +13,14 @@ type userController struct {
 	userIDPattern *regexp.Regexp
 }
 
+func newUserController() *userController {
+	return &userController{
+		userIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
+	}
+}
+
+// implements the Handler interface https://pkg.go.dev/net/http#Handler
 func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// w.Write([]byte("Hello from the User Controller"))
 	if r.URL.Path == "/users" {
 		switch r.Method {
 		case http.MethodGet:
@@ -113,10 +119,4 @@ func (uc *userController) parseRequest(r *http.Request) (models.User, error) {
 		return models.User{}, err
 	}
 	return u, nil
-}
-
-func newUserController() *userController {
-	return &userController{
-		userIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
-	}
 }
