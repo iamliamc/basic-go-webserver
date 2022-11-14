@@ -24,14 +24,16 @@ const (
 	repeatLastConstantExpression
 )
 
-func showExplorations() {
-	exploreStructs()
-	exploreMaps()
-	exploreArrays()
-	exploreSlices()
-	exploreConstantValues()
-	explorePointerValues()
-	exploreValueTypes()
+func Examples(showOutput bool) {
+	if showOutput {
+		exploreStructs()
+		exploreMaps()
+		exploreArrays()
+		exploreSlices()
+		exploreConstantValues()
+		explorePointerValues()
+		exploreValueTypes()
+	}
 }
 
 func exploreStructs() {
